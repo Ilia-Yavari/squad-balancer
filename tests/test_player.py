@@ -1,4 +1,5 @@
 import pytest
+
 from squad_balancer.player import Player
 
 
