@@ -74,3 +74,11 @@ def test_out_of_range_stats(
 ):
     with pytest.raises(ValueError, match="must be between 1 and 100, got"):
         Player(name, attack, defense, goalkeeping, stamina)
+
+
+def test_boundary_stats():
+    low_bound_player = Player("John Doe", 1, 1, 1, 1)
+    high_bound_player = Player("Jane Doe", 100, 100, 100, 100)
+
+    assert low_bound_player.overall == 1
+    assert high_bound_player.overall == 100
