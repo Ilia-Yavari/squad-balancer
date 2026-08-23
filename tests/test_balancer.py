@@ -5,7 +5,7 @@ from squad_balancer.player import Player
 
 
 def test_players_less_than_two_raises_value_error():
-    with pytest.raises(ValueError, match="At least 2 players are required to form teams."):
+    with pytest.raises(ValueError, match="At least 2 players are required to form teams"):
         balance_teams([Player("John Doe", 76, 58, 82, 30)])
 
 

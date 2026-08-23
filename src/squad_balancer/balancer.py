@@ -11,7 +11,7 @@ def balance_teams(
     team_b_name: str = "Team B",
 ) -> tuple[Team, Team]:
     if len(players) < 2:
-        raise ValueError("At least 2 players are required to form teams.")
+        raise ValueError("At least 2 players are required to form teams")
 
     total_players = len(players)
     team_a_size = total_players // 2
@@ -36,6 +36,6 @@ def balance_teams(
             break
 
     if best_teams is None:
-        raise RuntimeError("Failed to balance teams.")
+        raise RuntimeError("Failed to balance teams")
 
     return best_teams
