@@ -1,3 +1,5 @@
+from collections import Counter
+
 import pytest
 
 from squad_balancer.balancer import balance_teams
@@ -21,6 +23,8 @@ def test_balance_teams():
     assert abs(team_a.total_strength - team_b.total_strength) == 9.75
     assert len(team_a) == 2 == len(team_b)
 
+    assert Counter(players) == Counter(team_a.players + team_b.players)
+
 
 def test_odd_team_members():
     players = [
@@ -32,6 +36,8 @@ def test_odd_team_members():
     team_a, team_b = balance_teams(players)
     assert abs(team_a.total_strength - team_b.total_strength) == 51.75
     assert {len(team_a), len(team_b)} == {1, 2}
+
+    assert Counter(players) == Counter(team_a.players + team_b.players)
 
 
 def test_non_default_team_names():
@@ -45,3 +51,5 @@ def test_non_default_team_names():
     assert len(team_a) == 1 == len(team_b)
     assert team_a.name == "Team Alpha"
     assert team_b.name == "Team Bravo"
+
+    assert Counter(players) == Counter(team_a.players + team_b.players)

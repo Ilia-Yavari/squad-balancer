@@ -106,4 +106,3 @@ def test_equal_players_are_interchangeable_in_hash_collections():
     twin_a = Player("John Doe", 50, 50, 50, 50)
     twin_b = Player("John Doe", 50, 50, 50, 50)
     assert len({twin_a, twin_b}) == 1
-
