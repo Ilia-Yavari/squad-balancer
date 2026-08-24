@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+import statistics
+from dataclasses import dataclass, fields
 
 
 @dataclass
@@ -10,8 +11,12 @@ class Player:
     stamina: int
 
     @property
+    def stats(self) -> dict[str, int]:
+        return {f.name: getattr(self, f.name) for f in fields(self) if f.name != "name"}
+
+    @property
     def overall(self) -> float:
-        return sum((self.attack, self.defense, self.goalkeeping, self.stamina)) / 4
+        return statistics.mean(self.stats.values())
 
     def __post_init__(self) -> None:
         if not isinstance(self.name, str):
@@ -19,7 +24,7 @@ class Player:
         if not self.name.strip():
             raise ValueError("Player name must be non-empty")
 
-        stats = {k: v for k, v in vars(self).items() if k != "name"}
+        stats = self.stats
         for stat, value in stats.items():
             if isinstance(value, bool) or not isinstance(value, int):
                 raise TypeError(f"{stat} must be an integer, got {value!r}")

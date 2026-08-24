@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 import pytest
 
 from squad_balancer.player import Player
@@ -82,3 +84,13 @@ def test_boundary_stats():
 
     assert low_bound_player.overall == 1
     assert high_bound_player.overall == 100
+
+
+@dataclass
+class ExtendedPlayer(Player):
+    pace: int = 50
+
+
+def test_overall_includes_inherited_stats():
+    player = ExtendedPlayer("X", 80, 80, 80, 80, pace=10)
+    assert player.overall == 66
