@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import FrozenInstanceError, dataclass
 
 import pytest
 
@@ -86,7 +86,7 @@ def test_boundary_stats():
     assert high_bound_player.overall == 100
 
 
-@dataclass
+@dataclass(frozen=True)
 class ExtendedPlayer(Player):
     pace: int = 50
 
@@ -94,3 +94,16 @@ class ExtendedPlayer(Player):
 def test_overall_includes_inherited_stats():
     player = ExtendedPlayer("X", 80, 80, 80, 80, pace=10)
     assert player.overall == 66
+
+
+def test_player_is_immutable():
+    player = Player("John Doe", 76, 58, 82, 30)
+    with pytest.raises(FrozenInstanceError):
+        player.attack = 99
+
+
+def test_equal_players_are_interchangeable_in_hash_collections():
+    twin_a = Player("John Doe", 50, 50, 50, 50)
+    twin_b = Player("John Doe", 50, 50, 50, 50)
+    assert len({twin_a, twin_b}) == 1
+

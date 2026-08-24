@@ -2,7 +2,7 @@ import statistics
 from dataclasses import dataclass, fields
 
 
-@dataclass
+@dataclass(frozen=True)
 class Player:
     name: str
     attack: int
