@@ -35,7 +35,5 @@ def balance_teams(
         if diff == 0:
             break
 
-    if best_teams is None:
-        raise RuntimeError("Failed to balance teams")
-
+    assert best_teams is not None
     return best_teams
