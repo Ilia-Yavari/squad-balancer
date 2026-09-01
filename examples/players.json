@@ -1,0 +1,8 @@
+[
+    {"name": "Ali Rezaei", "attack": 85, "defense": 40, "goalkeeping": 30, "stamina": 90},
+    {"name": "John Smith", "attack": 60, "defense": 75, "goalkeeping": 45, "stamina": 80},
+    {"name": "Sara Ahmadi", "attack": 70, "defense": 70, "goalkeeping": 25, "stamina": 85},
+    {"name": "David Kim", "attack": 40, "defense": 60, "goalkeeping": 88, "stamina": 70},
+    {"name": "Reza Karimi", "attack": 90, "defense": 35, "goalkeeping": 20, "stamina": 75},
+    {"name": "Mike Brown", "attack": 55, "defense": 80, "goalkeeping": 50, "stamina": 65}
+]
